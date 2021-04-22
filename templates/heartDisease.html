@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    
+        <!-- Css file -->
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/css/heart.css">
+</head>
+
+<body>
+
+    <section id="header">
+        <nav class="navbar heart-nav">
+            <div class="logo">
+                <h1><span class="red">H</span>ealth <span class="red">A</span>pp</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="/heartpred">Heart Disease Prediction</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <section class="container">
+        <div class="heart-section">
+            <div class="img">
+                <img src="../static/img/heart.jpg" alt="heart_img">
+            </div>
+            <div class="heart-form">
+                <div class="heading">
+                    <h1>Know your chance of getting heart attack on one click</h1>
+                    <hr>
+                </div>
+                <form action="/predict" method="post">
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="age" class="label"> Age </label>
+                            <div class="info">
+                                <p>Age of the patient in years</p>
+                            </div>
+                        </div>
+                        <input type="number" min="0" id="age" name="age" class="form-control" placeholder="Age"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="gender" class="label"> Gender </label>
+                            <div class="info">
+                                <p>Gender of the patient</p>
+                            </div>
+                        </div>
+                        <select name="gender" id="gender" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="0">Female</option>
+                            <option value="1">Male</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="cp" class="label"> Chest Pain Type </label>
+                            <div class="info">
+                                <p>Please select your type of chest pain from below </p>
+                                <ul>
+                                    <li>typical angina</li>
+                                    <li>atypical angina</li>
+                                    <li>non-anginal pain</li>
+                                    <li>asymptomatic</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select name="cp" id="cp" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="1">Typical Angina</option>
+                            <option value="2">Atypical Angina</option>
+                            <option value="3">non-Anginal Pain</option>
+                            <option value="4">Asymptomatic(Select if the above are not applicable)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="restbp" class="label"> Resting Blood Pressure (in mm Hg) </label>
+                            <div class="info">
+                                <p>Resting systolic blood pressure</p>
+                                <table border="1">
+                                    <tr>
+                                        <th>Stage</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Normal</td>
+                                        <td>Less Than 120</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Elevated</td>
+                                        <td>120 - 129</td>
+                                    </tr>
+                                    <tr>
+                                        <td>High blood pressure (hypertension) stage 1</td>
+                                        <td>130 - 139</td>
+                                    </tr>
+                                    <tr>
+                                        <td>High blood pressure (hypertension) stage 2</td>
+                                        <td>140 or higher</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hypertensive crisis (consult a doctor immediately)</td>
+                                        <td>Higher than 180</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <input type="number" min="0" id="restbp" name="restbp" class="form-control"
+                            placeholder="Resting Blood Pressure" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="chol" class="label"> Serum Cholestoral (in mg/dl) </label>
+                            <div class="info">
+                                <p>Serum cholesterol in mg/dl</p>
+                            </div>
+                        </div>
+                        <input type="number" min="0" name="chol" id="chol" class="form-control"
+                            placeholder="Serum Cholestoral" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="fbs" class="label"> Fasting Blood Sugar </label>
+                            <div class="info">
+                                <p>Fasting blood sugar of the patient. Please choose if greater than 120 mg/dl or less
+                                    than 120mg/dl</p>
+                            </div>
+                        </div>
+                        <select name="fbs" id="fbs" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="0">Fasting Blood Sugar &lt; 120mg/dl</option>
+                            <option value="1">Fasting Blood Sugar &gt; 120mg/dl</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="restecg" class="label"> Resting Electro-cardiographic result </label>
+                            <div class="info">
+                                <p>An electrocardiogram (ECG) is a simple test that can be used to check your heart's
+                                    rhythm and electrical activity.</p>
+                                <ul>
+                                    <li>Normal</li>
+                                    <li>Having ST-T wave abnormality (T wave inversions and/or ST elevation or
+                                        depression of > 0.05 mV)</li>
+                                    <li>Showing probable or definite left ventricular hypertrophy by Estes' criteria
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select name="restecg" id="restecg" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="0">Normal</option>
+                            <option value="1">Having ST-T wave abnormality</option>
+                            <option value="2">Showing probable or definite left ventricular hypertrophy</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="mhrs" class="label"> Maximum Heart Rate Achieved</label>
+                            <div class="info">
+                                <p>Maximum heart rate achieved during ecg</p>
+                            </div>
+                        </div>
+                        <input type="text" name="mhrs" id="mhrs" class="form-control"
+                            placeholder="Maximum Heart Rate Achieved" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="exia" class="label">Exercise Include Angina</label>
+                            <div class="info">
+                                <p>If you get chest discomfort with activity that is known as exercise-induced angina.
+                                    Angina is generally caused from not getting enough blood through the arteries to
+                                    supply the walls of the heart with enough blood flow to adequately pump. The value
+                                    to be choose is: Yes or No</p>
+                            </div>
+                        </div>
+                        <select name="exia" id="exia" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="std" class="label"> ST depression</label>
+                            <div class="info">
+                                <p>ST depression induced by exercise relative to rest</p>
+                            </div>
+                        </div>
+                        <input type="text" name="std" id="std" class="form-control"
+                            placeholder="ST depression" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="slope" class="label"> Slope </label>
+                            <div class="info">
+                                <p>Measure of slope for peak exercise. Values can be:</p>
+                                <ul>
+                                    <li>up sloping</li>
+                                    <li>flat</li>
+                                    <li>down sloping</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select name="slope" id="slope" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="1">up sloping</option>
+                            <option value="2">flat</option>
+                            <option value="3">down sloping</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="ca" class="label"> No. of vessels</label>
+                            <div class="info">
+                                <p>Number of major vessels (0-3) colored by fluoroscopy. The values can be 0 to 3. </p>
+                            </div>
+                        </div>
+                        <input type="number" min="0" max="3" name="ca" id="ca" class="form-control"
+                            placeholder="No. of vessels" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="hoverable">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <label for="Thal" class="label">Thalassemia </label>
+                            <div class="info">
+                                <p>Thalassemia represents heart rate of the patient. Values can be:</p>
+                                <ul>
+                                    <li>normal</li>
+                                    <li>fixed defect</li>
+                                    <li>reversable defect</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select name="Thal" id="Thal" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="3">normal</option>
+                            <option value="6">fixed defect</option>
+                            <option value="7">reversable defect</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn">Predict</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+    <script>
+        let icons = document.querySelectorAll(".fa");
+        icons.forEach(icon => {
+            icon.addEventListener("click", (e) => {
+                if(!icon.parentElement.classList.contains("active")){
+                    icons.forEach(ico => {
+                        ico.parentElement.classList.remove("active");
+                    });
+                    icon.parentElement.classList.add("active")
+                }else{
+                    icon.parentElement.classList.remove("active");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

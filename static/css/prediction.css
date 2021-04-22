@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+.heart-nav {
+    background-color: rgba(18, 17, 24, 0.8);
+    padding: 0 1.5rem;
+}
+.result{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    margin: 30px 0;
+}
+.predYes{
+    color: tomato;
+}
+.predNo{
+    color: rgb(5, 119, 55);
+}
