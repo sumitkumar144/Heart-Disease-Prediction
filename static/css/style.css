@@ -117,6 +117,27 @@ footer{
     padding: 20px 0;
     color: white;
 }
+#disclaimer{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+}
+#disclaimer h1{
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    text-decoration: underline;
+    
+}
+#dis{
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
 
 @media (max-width:700px) {
     .row{

@@ -151,3 +151,23 @@
         height: 100%;
     }
 }
+@media (max-width: 768px) {
+    .heart-form .btn {
+        width: 60%;
+    }  
+}
+
+@media (max-width: 1092px) {
+    .info {
+        min-width: 250px;
+        top: 0;
+        left: 12%;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: blanchedalmond;
+    }
+
+    .heart-form {
+        width: 100%;
+    }
+     
+}
