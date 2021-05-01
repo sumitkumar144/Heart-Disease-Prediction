@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../static/css/heart.css">
 </head>
 
-<body>
+<body onload="loadFunction()">
 
     <section id="header">
         <nav class="navbar heart-nav">
@@ -292,6 +292,10 @@
         </div>
     </section>
     <script>
+
+        function loadFunction() {
+        alert("Please go through the disclaimer carefully before poceeding further");
+        }
         let icons = document.querySelectorAll(".fa");
         icons.forEach(icon => {
             icon.addEventListener("click", (e) => {
