@@ -17,6 +17,8 @@
   * [Credits](#credits)
   
   ## Demo
+  
+  - A glimpse of the web app:
    
   ![Alt text](static/img/heart-disease-prediction.gif)
 
